@@ -1,6 +1,9 @@
 作者：雷宇恒 学号：2022214124
-零基础也能看懂的Docker Web应用部署指南（2023新版）
+
+零基础也能看懂的Docker Web应用部署指南
+
 Docker部署流程图
+
 一、为什么选择Docker？从快递集装箱说起
 想象你要给朋友寄送一份生日礼物：
 
@@ -59,24 +62,32 @@ node_modules
 .git
 *.log
 .DS_Store
+
 分层构建原理：Docker的缓存机制就像乐高积木，每一层独立存储
 
 三、从开发到部署完整工作流
 3.1 本地开发调试
+
 bash
+
 复制
 # 构建镜像（-t参数命名标签）
+
 docker build -t my-web-app:v1 .
 
 # 运行容器（-p端口映射 -d后台运行）
+
 docker run -p 4000:3000 -d my-web-app:v1
 
 # 查看实时日志
+
 docker logs -f [容器ID]
 
 # 进入容器调试（就像SSH连接）
 docker exec -it [容器ID] /bin/sh
+
 3.2 云部署实战（以AWS ECS为例）
+
 推送镜像到Docker Hub：
 
 bash
@@ -97,8 +108,11 @@ AWS ECS部署架构图
 
 四、常见问题排雷指南
 Q1: 容器启动后立即退出？
+
 ✅ 检查CMD命令是否正确
+
 ✅ 查看日志docker logs [容器ID]
+
 ✅ 确认端口映射是否冲突
 
 Q2: 如何更新已部署的应用？
@@ -109,6 +123,7 @@ Q2: 如何更新已部署的应用？
 云平台滚动更新（零停机）
 
 Q3: 数据持久化方案？
+
 数据库建议使用云服务（RDS等）
 
 文件存储使用Volume：
@@ -116,6 +131,7 @@ Q3: 数据持久化方案？
 bash
 复制
 docker run -v /path/on/host:/app/data ...
+
 五、延伸学习路线图
 Docker Compose多容器编排
 
