@@ -1,0 +1,2 @@
+docker tag my-web-app:v1 username/repo:tag
+docker push username/repo:tag
